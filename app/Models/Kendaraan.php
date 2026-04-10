@@ -21,4 +21,9 @@ class Kendaraan extends Model
     {
         return $this->hasMany(Pemesanan::class, 'kendaraan_id');
     }
+
+    public function bbm()
+    {
+        return $this->hasMany(Bbm::class);
+    }
 }

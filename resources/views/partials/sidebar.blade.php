@@ -74,7 +74,18 @@
       <li class="menu-item {{ Request::segment(1) === 'approval' ? 'active' : '' }}">
         <a href="{{ route('approval.index') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-collection"></i>
-          <div data-i18n="Pesanan">Persetujuan</div>
+          <div data-i18n="Persetujuan">Persetujuan</div>
+        </a>
+      </li>
+
+      @endif
+
+      @if(auth()->user()->role == 'admin')
+
+      <li class="menu-item {{ Request::segment(1) === 'bbm' ? 'active' : '' }}">
+        <a href="{{ route('bbm.index') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-collection"></i>
+          <div data-i18n="Konsumsi BBM">Konsumsi BBM</div>
         </a>
       </li>
 

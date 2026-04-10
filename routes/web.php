@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BbmController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\KendaraanController;
@@ -102,6 +103,28 @@ Route::middleware('auth')->group(function () {
 
         Route::put('/{id}', [PersetujuanController::class, 'update'])->name('update');
 
+    });
+
+
+    // monitoring BBM
+    Route::prefix('bbm')->name('bbm.')->group(function () {
+        Route::get('/', [BbmController::class, 'index'])
+            ->name('index');
+
+        Route::get('/create', [BbmController::class, 'create'])
+            ->name('create');
+
+        Route::post('/', [BbmController::class, 'store'])
+            ->name('store');
+
+        Route::get('/{bbm}/edit', [BbmController::class, 'edit'])
+            ->name('edit');
+
+        Route::put('/{bbm}', [BbmController::class, 'update'])
+            ->name('update');
+
+        Route::delete('/{bbm}', [BbmController::class, 'destroy'])
+            ->name('destroy');
     });
 
 });
