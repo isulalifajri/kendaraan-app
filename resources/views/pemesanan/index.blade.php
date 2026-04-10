@@ -22,6 +22,45 @@
         </a>
     </div>
 
+    {{-- FILTER --}}
+    <div class="card-body border-bottom">
+        <form action="{{ route('pemesanan.export') }}" method="GET" class="row g-3">
+
+            <div class="col-md-3">
+                <label class="form-label">Dari Tanggal</label>
+                <input type="date" name="start" 
+                    value="{{ request('start') }}"
+                    class="form-control @error('start') is-invalid @enderror">
+                @error('start')
+                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">Sampai Tanggal</label>
+                <input type="date" name="end" 
+                    value="{{ request('end') }}"
+                    class="form-control @error('end') is-invalid @enderror">
+                @error('end')
+                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="col-md-6 d-flex flex-column justify-content-end">
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bx bx-download"></i> Export Excel
+                    </button>
+
+                    <a href="{{ route('pemesanan.index') }}" class="btn btn-secondary">
+                        Reset
+                    </a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
     <div class="table-responsive text-nowrap">
         <table class="table table-hover table-striped">
             <thead>

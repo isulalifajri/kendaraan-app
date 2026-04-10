@@ -9,6 +9,8 @@ use App\Models\Persetujuan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PemesananExport;
 
 class PemesananController extends Controller
 {
@@ -120,6 +122,20 @@ class PemesananController extends Controller
 
             return back()->withInput()->with('error', $e->getMessage());
         }
+    }
+
+    public function export(Request $request)
+    {
+        $request->validate([
+            'start' => 'required|date',
+            'end' => 'required|date|after_or_equal:start',
+        ]);
+
+        $data = Pemesanan::with(['user', 'kendaraan', 'driver'])
+            ->whereBetween('tanggal_mulai', [$request->start, $request->end])
+            ->get();
+
+        return Excel::download(new PemesananExport($data), 'laporan_pemesanan.xlsx');
     }
 
     public function show(Pemesanan $pemesanan)
