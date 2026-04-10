@@ -39,6 +39,13 @@
             </a>
           </li>
         </ul>
+        <ul class="menu-sub">
+          <li class="menu-item  {{ Request::is('masterData/kendaraan*') ? 'active' : '' }}">
+            <a href="{{ route('kendaraan.index') }}" class="menu-link">
+              <div data-i18n="kendaraan">Kendaraan</div>
+            </a>
+          </li>
+        </ul>
       </li>
 
       <li class="menu-item {{ Request::segment(1) === 'pesanan' ? 'active' : '' }}">

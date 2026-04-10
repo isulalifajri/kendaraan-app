@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Kendaraan;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class KendaraanSeeder extends Seeder
@@ -18,14 +19,18 @@ class KendaraanSeeder extends Seeder
                 'jenis' => 'angkutan orang',
                 'kepemilikan' => 'perusahaan',
                 'nomor_polisi' => 'L 1234 AB',
-                'status' => 'tersedia'
+                'status' => 'tersedia',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'nama_kendaraan' => 'Truck',
                 'jenis' => 'angkutan barang',
                 'kepemilikan' => 'sewa',
                 'nomor_polisi' => 'L 5678 CD',
-                'status' => 'tersedia'
+                'status' => 'tersedia',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]
         ]);
     }
