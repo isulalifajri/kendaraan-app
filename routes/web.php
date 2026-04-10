@@ -7,6 +7,7 @@ use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\PersetujuanController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 

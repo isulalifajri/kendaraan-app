@@ -92,7 +92,7 @@ class ServiceController extends Controller
                 'kendaraan_id' => $request->kendaraan_id,
                 'tanggal_service' => $request->tanggal_service,
                 'keterangan' => $request->keterangan,
-                'status' => $request->biaya,
+                'status' => $request->status,
             ]);
 
             DB::commit();

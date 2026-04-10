@@ -89,6 +89,13 @@
         </a>
       </li>
 
+      <li class="menu-item {{ Request::segment(1) === 'service' ? 'active' : '' }}">
+        <a href="{{ route('service.index') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-collection"></i>
+          <div data-i18n="Jadwal Service">Jadwal Service</div>
+        </a>
+      </li>
+
       @endif
       
     </ul>
