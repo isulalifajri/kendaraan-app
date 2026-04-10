@@ -45,8 +45,8 @@ id="layout-navbar">
                   </div>
                 </div>
                 <div class="flex-grow-1">
-                  <span class="fw-medium d-block">Tes name</span>
-                  <small class="text-muted">role names</small>
+                  <span class="fw-medium d-block">{{ ucfirst(auth()->user()->name) }}</span>
+                  <small class="text-muted">{{ auth()->user()->role }}</small>
                 </div>
               </div>
             </a>

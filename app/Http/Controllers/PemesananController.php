@@ -84,7 +84,7 @@ class PemesananController extends Controller
         try {
 
             $pemesanan = Pemesanan::create([
-                'user_id' => 1, // nanti ganti auth()->id()
+                'user_id' => auth()->id(),
                 'kendaraan_id' => $request->kendaraan_id,
                 'driver_id' => $request->driver_id,
                 'tanggal_mulai' => $request->tanggal_mulai,
