@@ -68,64 +68,80 @@
   </div>
 </div>
 
-<div class="row mb-1">
-  <div class="col-12 col-md-4 col-md-2">
-    <a href="">
-      <div class="card border mt-2">
-        <div class="card-header">
-            <h5 class="text-primary mb-0">Terjual</h5>
-            <small class="text-muted">Total Barang terjual</small>
+<div class="row mb-4">
+
+  <div class="col-md-3 mb-3">
+    <div class="card shadow-sm border-0">
+      <div class="card-body d-flex justify-content-between align-items-center">
+        <div>
+          <small class="text-muted">Total Pemesanan</small>
+          <h3 class="mb-0">{{ $total }}</h3>
         </div>
-        <div class="card-body">
-          <h2 class="mb-2">{{ $terjual ?? 0 }}</h2>
-        </div>
-      </div>
-    </a>
-  </div>
-  <div class="col-12 col-md-4 col-md-2">
-    <a href="">
-      <div class="card border mt-2">
-        <div class="card-header">
-            <h5 class="text-primary mb-0">Pengeluaran</h5>
-            <small class="text-muted">Total pengeluaran</small>
-        </div>
-        <div class="card-body">
-          <h2 class="mb-2">1000</h2>
+        <div class="bg-primary text-white rounded p-2">
+          <i class="bx bx-cart fs-4"></i>
         </div>
       </div>
-    </a>
+    </div>
   </div>
-  <div class="col-12 col-md-4 col-md-2">
-    <a href="">
-      <div class="card border mt-2">
-        <div class="card-header">
-            <h5 class="text-primary mb-0">Penjualan</h5>
-            <small class="text-muted">Total Penjualan</small>
+
+  <div class="col-md-3 mb-3">
+    <div class="card shadow-sm border-0">
+      <div class="card-body d-flex justify-content-between align-items-center">
+        <div>
+          <small class="text-muted">Menunggu</small>
+          <h3 class="mb-0 text-warning">{{ $menunggu }}</h3>
         </div>
-        <div class="card-body">
-          <h2 class="mb-2">23123213
-          </h2>
+        <div class="bg-warning text-white rounded p-2">
+          <i class="bx bx-time fs-4"></i>
         </div>
       </div>
-    </a>
+    </div>
   </div>
+
+  <div class="col-md-3 mb-3">
+    <div class="card shadow-sm border-0">
+      <div class="card-body d-flex justify-content-between align-items-center">
+        <div>
+          <small class="text-muted">Disetujui</small>
+          <h3 class="mb-0 text-success">{{ $disetujui }}</h3>
+        </div>
+        <div class="bg-success text-white rounded p-2">
+          <i class="bx bx-check fs-4"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 mb-3">
+    <div class="card shadow-sm border-0">
+      <div class="card-body d-flex justify-content-between align-items-center">
+        <div>
+          <small class="text-muted">Ditolak</small>
+          <h3 class="mb-0 text-danger">{{ $ditolak }}</h3>
+        </div>
+        <div class="bg-danger text-white rounded p-2">
+          <i class="bx bx-x fs-4"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
-<h3 class="text-primary mt-3">Data Grafik Penjualan</h3>
-<div class="row mt-1">
-  <div class="col-12 col-md-6 mt-2">
-    <div id="grf-1"></div>
-  </div>
+<h5 class="text-primary mt-3">Grafik Pemesanan (Bulanan)</h5>
 
-  <div class="col-12 col-md-6 mt-2">
-    <div id="grf-2"></div>
+<div class="card">
+  <div class="card-body">
+    <div id="chart"></div>
   </div>
 </div>
 
     
 @endsection
 
+
 @push('js')
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 <script>
   const displayTime = document.querySelector(".display-time");
@@ -137,5 +153,24 @@
   }
 
   showTime();
+</script>
+
+<script>
+    var options = {
+        chart: {
+            type: 'line',
+            height: 350
+        },
+        series: [{
+            name: 'Pemesanan',
+            data: @json($chart)
+        }],
+        xaxis: {
+            categories: ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des']
+        }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
 </script>
 @endpush
