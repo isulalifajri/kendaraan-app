@@ -23,8 +23,9 @@ class Persetujuan extends Model
         return $this->belongsTo(Pemesanan::class, 'pemesanan_id');
     }
 
-    public function persetujuan()
+    public function penyetuju()
     {
-        return $this->hasMany(Persetujuan::class, 'penyetuju_id');
+        return $this->belongsTo(User::class, 'penyetuju_id');
     }
+    
 }

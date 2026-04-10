@@ -14,14 +14,16 @@ class PemesananController extends Controller
 {
     public function index()
     {
+        $title = 'Page Pemesanan';
         $data = Pemesanan::with(['user', 'kendaraan', 'driver'])->latest()->get();
 
-        return view('pemesanan.index', compact('data'));
+        return view('pemesanan.index', compact('title','data'));
     }
 
     public function create()
     {
         return view('pemesanan.create', [
+            'title' => 'Page Create Pemesanana',
             'kendaraan' => Kendaraan::all(),
             'driver' => Driver::all(),
             'penyetuju' => User::where('role', 'penyetuju')->get()
@@ -123,6 +125,7 @@ class PemesananController extends Controller
     public function edit(Pemesanan $pemesanan)
     {
         return view('pemesanan.edit', [
+            'title' => 'Page Edit Pemesanan',
             'pemesanan' => $pemesanan,
             'kendaraan' => Kendaraan::all(),
             'driver' => Driver::all(),

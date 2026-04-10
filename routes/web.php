@@ -3,14 +3,23 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\KendaraanController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\PersetujuanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::group(['middleware' => 'guest'], function () {
+    // login
+    Route::get('login',[LoginController::class,'index'])->name('login');
+    Route::post('login/authenticate',[LoginController::class,'authenticate'])->name('login.authenticate');
+   
+});
+
+// logout
+Route::middleware('auth')->group(function () {
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+});
 
 Route::get('/', [DashboardController::class,'index'])->name('dashboard');
 

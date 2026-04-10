@@ -64,6 +64,13 @@
           <div data-i18n="Pesanan">Pemesanan</div>
         </a>
       </li>
+
+      <li class="menu-item {{ Request::segment(1) === 'approval' ? 'active' : '' }}">
+        <a href="{{ route('approval.index') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-collection"></i>
+          <div data-i18n="Pesanan">Persetujuan</div>
+        </a>
+      </li>
   
       <li class="menu-header small text-uppercase">
         <span class="menu-header-text">Apps &amp; Pages</span>
@@ -77,19 +84,6 @@
       </li>
       <!-- Pages -->
 
-      <li class="menu-item {{ Request::is('users*') ? 'active' : '' }}">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bx-user"></i>
-          <div data-i18n="Data Users">Data Users</div>
-        </a>
-        <ul class="menu-sub">
-          <li class="menu-item {{ Request::is('user*') ? 'active' : '' }}">
-            <a href="" class="menu-link">
-              <div data-i18n="Users List">Users List</div>
-            </a>
-          </li>
-        </ul>
-      </li>
 
       <li class="menu-item open {{ Request::is('manajemenAkun*') ? 'active' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
