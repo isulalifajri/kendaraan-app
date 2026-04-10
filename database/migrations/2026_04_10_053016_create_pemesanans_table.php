@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('tanggal_selesai');
             $table->string('tujuan');
 
-            $table->enum('status', ['menunggu', 'disetujui', 'ditolak'])->default('menunggu');
+            $table->enum('status', ['menunggu', 'disetujui', 'ditolak', 'selesai'])->default('menunggu');
             $table->timestamps();
         });
     }

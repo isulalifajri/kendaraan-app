@@ -18,7 +18,7 @@
   
     <ul class="menu-inner py-1">
       <!-- Dashboards -->
-      <li class="menu-item {{ Request::is('dashboard*') ? 'active' : '' }}">
+      <li class="menu-item {{ Request::is('/') ? 'active' : '' }}">
         <a href="{{ route('dashboard') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div data-i18n="Dashboards">Dashboards</div>
@@ -58,11 +58,10 @@
 
       </li>
 
-      <li class="menu-item {{ Request::segment(1) === 'pesanan' ? 'active' : '' }}">
-        <a href="" class="menu-link">
+      <li class="menu-item {{ Request::segment(1) === 'pemesanan' ? 'active' : '' }}">
+        <a href="{{ route('pemesanan.index') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-cart-alt"></i>
-          <div data-i18n="Pesanan">Pesanan</div>
-          <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto"><i class="menu-icon tf-icons bx bx-shopping-bag"></i></div>
+          <div data-i18n="Pesanan">Pemesanan</div>
         </a>
       </li>
   

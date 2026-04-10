@@ -11,7 +11,7 @@ class Persetujuan extends Model
 
     protected $fillable = [
         'pemesanan_id',
-        'user_id',
+        'penyetuju_id',
         'level',
         'status',
         'tanggal_persetujuan'
@@ -23,8 +23,8 @@ class Persetujuan extends Model
         return $this->belongsTo(Pemesanan::class, 'pemesanan_id');
     }
 
-    public function user()
+    public function persetujuan()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->hasMany(Persetujuan::class, 'penyetuju_id');
     }
 }

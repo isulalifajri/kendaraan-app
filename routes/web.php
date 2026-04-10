@@ -3,6 +3,8 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\KendaraanController;
+use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\PersetujuanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -57,4 +59,36 @@ Route::prefix('masterData')->group(function () {
         Route::delete('/{user}', [DriverController::class, 'destroy'])
             ->name('destroy');
     });
+});
+
+// pemesanan
+Route::prefix('pemesanan')->name('pemesanan.')->group(function () {
+    Route::get('/', [PemesananController::class, 'index'])
+        ->name('index');
+
+    Route::get('/create', [PemesananController::class, 'create'])
+        ->name('create');
+
+    Route::post('/', [PemesananController::class, 'store'])
+        ->name('store');
+
+    Route::get('/{pemesanan}/edit', [PemesananController::class, 'edit'])
+        ->name('edit');
+
+    Route::put('/{pemesanan}', [PemesananController::class, 'update'])
+        ->name('update');
+
+    Route::delete('/{pemesanan}', [PemesananController::class, 'destroy'])
+        ->name('destroy');
+});
+
+// persetujuan
+Route::prefix('approval')->name('approval.')->group(function () {
+
+    Route::get('/', [PersetujuanController::class, 'index'])->name('index');
+
+    Route::put('/{id}/approve-l1', [PersetujuanController::class, 'approveL1'])->name('approveL1');
+    Route::put('/{id}/approve-l2', [PersetujuanController::class, 'approveL2'])->name('approveL2');
+    Route::put('/{id}/reject', [PersetujuanController::class, 'reject'])->name('reject');
+
 });
