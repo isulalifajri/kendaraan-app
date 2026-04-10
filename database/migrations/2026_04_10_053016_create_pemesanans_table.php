@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('pemesanans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('kendaraan_id')->constrained('kendaraans')->cascadeOnDelete();
+            $table->foreignId('driver_id')->nullable()->constrained('drivers')->nullOnDelete();
+
+            $table->date('tanggal_mulai');
+            $table->date('tanggal_selesai');
+            $table->string('tujuan');
+
+            $table->enum('status', ['menunggu', 'disetujui', 'ditolak'])->default('menunggu');
             $table->timestamps();
         });
     }

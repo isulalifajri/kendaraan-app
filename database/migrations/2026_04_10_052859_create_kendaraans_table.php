@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('kendaraans', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_kendaraan');
+            $table->enum('jenis', ['angkutan orang', 'angkutan barang']);
+            $table->enum('kepemilikan', ['perusahaan', 'sewa']);
+            $table->string('nomor_polisi');
+            $table->enum('status', ['tersedia', 'digunakan', 'service']);
             $table->timestamps();
         });
     }

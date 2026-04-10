@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('no_hp');
+            $table->enum('status', ['tersedia', 'bertugas']);
             $table->timestamps();
         });
     }
