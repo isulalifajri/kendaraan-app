@@ -33,9 +33,9 @@
         </a>
   
         <ul class="menu-sub">
-          <li class="menu-item  {{ Request::is('masterData/cabang*') ? 'active' : '' }}">
-            <a href="" class="menu-link">
-              <div data-i18n="Cabang">Cabang</div>
+          <li class="menu-item  {{ Request::is('masterData/user*') ? 'active' : '' }}">
+            <a href="{{ route('user.index') }}" class="menu-link">
+              <div data-i18n="user">User</div>
             </a>
           </li>
         </ul>
