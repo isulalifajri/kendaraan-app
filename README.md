@@ -9,7 +9,7 @@ jadi tinggal jalankan perintah ini: `php artisan migrate:fresh --seed` untuk men
 
 email dan password untuk login:
 
-``
+```
 *role admin
 email : admin@mail.com
 pwd : 123456
@@ -25,4 +25,4 @@ pwd : 123456
 * untuk user yang ditambahkan manual melalu cms passwordnya otomatis keisi: password
 
 
-``
+```
