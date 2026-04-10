@@ -50,6 +50,14 @@
                             @if($lvl1)
                                 <div>
                                     <small>{{ $lvl1->penyetuju->name }}</small><br>
+                                    {{-- TOMBOL MUNCUL HANYA UNTUK PENYETUJU --}}
+                                    @if(auth()->id() == $lvl1->penyetuju_id && $lvl1->status == 'menunggu')
+                                        <button class="btn btn-sm btn-primary mt-1"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#modalLvl1{{ $lvl1->id }}">
+                                            Update
+                                        </button>
+                                    @endif
                                     <span class="badge bg-{{ 
                                         $lvl1->status == 'disetujui' ? 'success' : 
                                         ($lvl1->status == 'ditolak' ? 'danger' : 'warning') }}">
@@ -66,11 +74,22 @@
                                     <small>{{ $lvl2->penyetuju->name }}</small><br>
 
                                     @if($lvl1 && $lvl1->status == 'disetujui')
+
+                                        {{-- TOMBOL LEVEL 2 --}}
+                                        @if(auth()->id() == $lvl2->penyetuju_id && $lvl2->status == 'menunggu')
+                                            <button class="btn btn-sm btn-primary mt-1"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#modalLvl2{{ $lvl2->id }}">
+                                                Approve
+                                            </button>
+                                        @endif
+
                                         <span class="badge bg-{{ 
                                             $lvl2->status == 'disetujui' ? 'success' : 
                                             ($lvl2->status == 'ditolak' ? 'danger' : 'warning') }}">
                                             {{ $lvl2->status }}
                                         </span>
+
                                     @else
                                         <span class="badge bg-secondary">
                                             Menunggu Level 1
@@ -92,6 +111,70 @@
                         </td>
 
                     </tr>
+
+
+                    </tr>
+
+                    {{-- MODAL LEVEL 1 --}}
+                    @if($lvl1)
+                    <div class="modal fade" id="modalLvl1{{ $lvl1->id }}" tabindex="-1">
+                        <div class="modal-dialog">
+                            <form action="{{ route('approval.update', $lvl1->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Persetujuan Level 1</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <select name="status" class="form-select">
+                                            <option value="disetujui">Setujui</option>
+                                            <option value="ditolak">Tolak</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary">Simpan</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    @endif
+
+
+                    {{-- MODAL LEVEL 2 --}}
+                    @if($lvl2)
+                    <div class="modal fade" id="modalLvl2{{ $lvl2->id }}" tabindex="-1">
+                        <div class="modal-dialog">
+                            <form action="{{ route('approval.update', $lvl2->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Persetujuan Level 2</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <select name="status" class="form-select">
+                                            <option value="disetujui">Setujui</option>
+                                            <option value="ditolak">Tolak</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary">Simpan</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    @endif
 
                 @empty
                     <tr>

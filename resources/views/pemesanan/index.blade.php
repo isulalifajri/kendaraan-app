@@ -72,21 +72,25 @@
                         <td>
                             <div class="d-flex gap-1">
 
-                                <a href="{{ route('pemesanan.edit', $p->id) }}" 
-                                   class="btn btn-warning btn-sm text-white">
-                                    Edit
-                                </a>
+                                @if($p->status == 'menunggu')
+                                    <a href="{{ route('pemesanan.edit', $p->id) }}" 
+                                    class="btn btn-warning btn-sm text-white">
+                                        Edit
+                                    </a>
 
-                                <form method="POST" action="{{ route('pemesanan.destroy', $p->id) }}">
-                                    @csrf
-                                    @method('DELETE')
+                                    <form method="POST" action="{{ route('pemesanan.destroy', $p->id) }}">
+                                        @csrf
+                                        @method('DELETE')
 
-                                    <button type="submit" 
-                                        class="btn btn-danger btn-sm"
-                                        onclick="return confirm('Yakin hapus?')">
-                                        Hapus
-                                    </button>
-                                </form>
+                                        <button type="submit" 
+                                            class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Yakin hapus?')">
+                                            Hapus
+                                        </button>
+                                    </form>
+                                @else
+                                    <span class="badge bg-secondary">Tidak bisa diubah</span>
+                                @endif
 
                             </div>
                         </td>

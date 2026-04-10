@@ -92,12 +92,9 @@ Route::middleware('auth')->group(function () {
 
     // persetujuan
     Route::prefix('approval')->name('approval.')->group(function () {
-
         Route::get('/', [PersetujuanController::class, 'index'])->name('index');
 
-        Route::put('/{id}/approve-l1', [PersetujuanController::class, 'approveL1'])->name('approveL1');
-        Route::put('/{id}/approve-l2', [PersetujuanController::class, 'approveL2'])->name('approveL2');
-        Route::put('/{id}/reject', [PersetujuanController::class, 'reject'])->name('reject');
+        Route::put('/{id}', [PersetujuanController::class, 'update'])->name('update');
 
     });
 
