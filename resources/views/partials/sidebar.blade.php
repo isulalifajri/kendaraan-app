@@ -1,0 +1,98 @@
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+    <div class="app-brand demo">
+      <a href="" class="app-brand-link">
+        <span class="app-brand-logo demo img-icons">
+          <img src="{{ asset('no-images.jpg') }}" 
+               alt="default" 
+               class="img-fluid h-100">
+        </span>
+        <span class="app-brand-text demo menu-text fw-bold ms-2">TES</span>
+      </a>
+  
+      <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+        <i class="bx bx-chevron-left bx-sm align-middle"></i>
+      </a>
+    </div>
+  
+    <div class="menu-inner-shadow"></div>
+  
+    <ul class="menu-inner py-1">
+      <!-- Dashboards -->
+      <li class="menu-item {{ Request::is('dashboard*') ? 'active' : '' }}">
+        <a href="{{ route('dashboard') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-home-circle"></i>
+          <div data-i18n="Dashboards">Dashboards</div>
+        </a>
+      </li>
+  
+      <!-- Layouts -->
+      <li class="menu-item {{ Request::is('masterData*') ? 'active' : '' }}">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bx-layout"></i>
+          <div data-i18n="Data Master">Data Master</div>
+        </a>
+  
+        <ul class="menu-sub">
+          <li class="menu-item  {{ Request::is('masterData/cabang*') ? 'active' : '' }}">
+            <a href="" class="menu-link">
+              <div data-i18n="Cabang">Cabang</div>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="menu-item {{ Request::segment(1) === 'pesanan' ? 'active' : '' }}">
+        <a href="" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-cart-alt"></i>
+          <div data-i18n="Pesanan">Pesanan</div>
+          <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto"><i class="menu-icon tf-icons bx bx-shopping-bag"></i></div>
+        </a>
+      </li>
+  
+      <li class="menu-header small text-uppercase">
+        <span class="menu-header-text">Apps &amp; Pages</span>
+      </li>
+      <!-- Apps -->
+      <li class="menu-item {{ Request::is('barangData*') ? 'active' : '' }}">
+        <a href="" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-collection"></i>
+          <div data-i18n="Data Barang">Data Barang</div>
+        </a>
+      </li>
+      <!-- Pages -->
+
+      <li class="menu-item {{ Request::is('users*') ? 'active' : '' }}">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bx-user"></i>
+          <div data-i18n="Data Users">Data Users</div>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item {{ Request::is('user*') ? 'active' : '' }}">
+            <a href="" class="menu-link">
+              <div data-i18n="Users List">Users List</div>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="menu-item open {{ Request::is('manajemenAkun*') ? 'active' : '' }}">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bx-cog"></i>
+          <div data-i18n="Manajemen Akun">Manajemen Akun</div>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item {{ Request::is('manajemenAkun/permission') ? 'active' : '' }}">
+            <a href="" class="menu-link">
+              <div data-i18n="Permission">Permission</div>
+            </a>
+          </li>
+          <li class="menu-item {{ Request::is('manajemenAkun/role') ? 'active' : '' }}">
+            <a href="" class="menu-link">
+              <div data-i18n="Role">Role</div>
+            </a>
+          </li>
+        </ul>
+    </li>
+
+    </ul>
+  </aside>
