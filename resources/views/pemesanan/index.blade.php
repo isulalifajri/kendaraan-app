@@ -89,7 +89,10 @@
                                         </button>
                                     </form>
                                 @else
-                                    <span class="badge bg-secondary">Tidak bisa diubah</span>
+                                    <a href="{{ route('pemesanan.show', $p->id) }}" 
+                                        class="btn btn-info btn-sm text-white">
+                                        View
+                                    </a>
                                 @endif
 
                             </div>

@@ -122,6 +122,23 @@ class PemesananController extends Controller
         }
     }
 
+    public function show(Pemesanan $pemesanan)
+    {
+        try {
+            $pemesanan->load([
+                'user',
+                'kendaraan',
+                'driver',
+                'persetujuan.penyetuju'
+            ]);
+
+            return view('pemesanan.show', ['data' => $pemesanan]);
+
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal membuka detail');
+        }
+    }
+
     public function edit(Pemesanan $pemesanan)
     {
         return view('pemesanan.edit', [

@@ -24,6 +24,8 @@
           <div data-i18n="Dashboards">Dashboards</div>
         </a>
       </li>
+
+      @if(auth()->user()->role == 'admin')
   
       <!-- Layouts -->
       <li class="menu-item {{ Request::is('masterData*') ? 'active' : '' }}">
@@ -65,44 +67,18 @@
         </a>
       </li>
 
+      @endif
+
+      @if(auth()->user()->role == 'penyetuju')
+
       <li class="menu-item {{ Request::segment(1) === 'approval' ? 'active' : '' }}">
         <a href="{{ route('approval.index') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-collection"></i>
           <div data-i18n="Pesanan">Persetujuan</div>
         </a>
       </li>
-  
-      <li class="menu-header small text-uppercase">
-        <span class="menu-header-text">Apps &amp; Pages</span>
-      </li>
-      <!-- Apps -->
-      <li class="menu-item {{ Request::is('barangData*') ? 'active' : '' }}">
-        <a href="" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-collection"></i>
-          <div data-i18n="Data Barang">Data Barang</div>
-        </a>
-      </li>
-      <!-- Pages -->
 
-
-      <li class="menu-item open {{ Request::is('manajemenAkun*') ? 'active' : '' }}">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bx-cog"></i>
-          <div data-i18n="Manajemen Akun">Manajemen Akun</div>
-        </a>
-        <ul class="menu-sub">
-          <li class="menu-item {{ Request::is('manajemenAkun/permission') ? 'active' : '' }}">
-            <a href="" class="menu-link">
-              <div data-i18n="Permission">Permission</div>
-            </a>
-          </li>
-          <li class="menu-item {{ Request::is('manajemenAkun/role') ? 'active' : '' }}">
-            <a href="" class="menu-link">
-              <div data-i18n="Role">Role</div>
-            </a>
-          </li>
-        </ul>
-    </li>
-
+      @endif
+      
     </ul>
   </aside>

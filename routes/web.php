@@ -80,6 +80,9 @@ Route::middleware('auth')->group(function () {
         Route::post('/', [PemesananController::class, 'store'])
             ->name('store');
 
+        Route::get('/{pemesanan}', [PemesananController::class, 'show'])
+            ->name('show');
+
         Route::get('/{pemesanan}/edit', [PemesananController::class, 'edit'])
             ->name('edit');
 

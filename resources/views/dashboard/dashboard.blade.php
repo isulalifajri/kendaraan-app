@@ -22,7 +22,7 @@
               }
             @endphp
             @auth
-                <h5 class="card-title text-primary text-capitalize">Halo, {{ $greet }} {{  auth()->user()->username  }} 🎉</h5>
+                <h5 class="card-title text-primary text-capitalize">Halo, {{ $greet }} {{  auth()->user()->name  }} 🎉</h5>
             @else
                 <h5 class="card-title text-primary">Halo, {{ $greet }} 🎉</h5>
             @endauth
