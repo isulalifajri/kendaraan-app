@@ -91,15 +91,22 @@
 
       <li class="menu-item {{ Request::segment(1) === 'service' ? 'active' : '' }}">
         <a href="{{ route('service.index') }}" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-collection"></i>
+          <i class="menu-icon tf-icons bx bx-calendar"></i>
           <div data-i18n="Jadwal Service">Jadwal Service</div>
         </a>
       </li>
 
       <li class="menu-item {{ Request::segment(1) === 'riwayat' ? 'active' : '' }}">
         <a href="{{ route('riwayat.index') }}" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-collection"></i>
+          <i class="menu-icon tf-icons bx bx-file"></i>
           <div data-i18n="Riwayat Pemakaian">Riwayat Pemakaian</div>
+        </a>
+      </li>
+
+      <li class="menu-item {{ Request::segment(1) === 'log' ? 'active' : '' }}">
+        <a href="{{ route('log.index') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-pulse"></i>
+          <div data-i18n="Log Activity">Log Activity</div>
         </a>
       </li>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuditController;
 use App\Http\Controllers\BbmController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DriverController;
@@ -153,6 +154,12 @@ Route::middleware('auth')->group(function () {
     // Riwayat Pemakaian Kendaraan
     Route::prefix('riwayat')->name('riwayat.')->group(function () {
         Route::get('/', [RiwayatController::class, 'index'])
+            ->name('index');
+    });
+
+    // Log Activity
+    Route::prefix('log')->name('log.')->group(function () {
+        Route::get('/', [AuditController::class, 'index'])
             ->name('index');
     });
 
