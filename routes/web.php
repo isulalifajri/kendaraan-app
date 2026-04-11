@@ -7,6 +7,7 @@ use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\PersetujuanController;
+use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -147,6 +148,12 @@ Route::middleware('auth')->group(function () {
 
         Route::delete('/{service}', [ServiceController::class, 'destroy'])
             ->name('destroy');
+    });
+
+    // Riwayat Pemakaian Kendaraan
+    Route::prefix('riwayat')->name('riwayat.')->group(function () {
+        Route::get('/', [RiwayatController::class, 'index'])
+            ->name('index');
     });
 
 });

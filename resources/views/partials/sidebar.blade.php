@@ -96,6 +96,13 @@
         </a>
       </li>
 
+      <li class="menu-item {{ Request::segment(1) === 'riwayat' ? 'active' : '' }}">
+        <a href="{{ route('riwayat.index') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-collection"></i>
+          <div data-i18n="Riwayat Pemakaian">Riwayat Pemakaian</div>
+        </a>
+      </li>
+
       @endif
       
     </ul>
