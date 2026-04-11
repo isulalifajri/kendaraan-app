@@ -3,6 +3,8 @@
 
 Project ini saya buat menggunakan laravel versi 12, PHP 8.2.12 dan database nya menggunakan database MySQL
 
+* untuk env nya tinggal ngambil dari env.example
+
 untuk table user, kendaraan, dan driver ini menggunakan seeder.
 
 jadi tinggal jalankan perintah ini: `php artisan migrate:fresh --seed` untuk mengisi otomatis tabel tsb.
@@ -26,3 +28,21 @@ pwd : 123456
 
 
 ```
+
+* menu yang ditampilkan pada role admin
+
+`
+- Dashboard
+- Data Master
+- Pemesanan
+- Konsumsi BBM
+- Jadwal Service
+- Riwayat Pemakaian
+- Log Activity
+`
+
+* menu yang di tampilkan dengan role penyetuju
+`
+- Dashboard
+- Persetujuan
+`
