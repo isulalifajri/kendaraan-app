@@ -9,6 +9,8 @@ untuk table user, kendaraan, dan driver ini menggunakan seeder.
 
 jadi tinggal jalankan perintah ini: `php artisan migrate:fresh --seed` untuk mengisi otomatis tabel tsb.
 
+utk menjalankan project : `php artisan serve`
+
 email dan password untuk login:
 
 ```
@@ -31,7 +33,7 @@ pwd : 123456
 
 * menu yang ditampilkan pada role admin
 
-`
+``
 - Dashboard
 - Data Master
 - Pemesanan
@@ -39,10 +41,12 @@ pwd : 123456
 - Jadwal Service
 - Riwayat Pemakaian
 - Log Activity
-`
+``
 
 * menu yang di tampilkan dengan role penyetuju
-`
+
+
+``
 - Dashboard
 - Persetujuan
-`
+``
